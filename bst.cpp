@@ -50,21 +50,24 @@ void delete_bst(Bst bst)
 */
 int get_depth(Bst bst)
 {
-  if (bst == 0)
+  if(bst==0)
   {
     return 0;
   }
-
-  if(bst->right == 0 && bst->left == 0)
+  else
   {
-    return 1;
-  }
-  if(get_depth(right_subtree(bst)) >  get_depth(left_subtree(bst)))
-  {
-    return 1 + get_depth(right_subtree(bst));
-  }
+    int ldepth=get_depth(bst->left);
+    int rdepth=get_depth(bst->right);
 
-  return 1 +get_depth(left_subtree(bst));
+    if(ldepth>rdepth)
+    {
+      return ldepth+1;
+    }
+    else
+    {
+      return rdepth+1;
+    }
+  }
 }
 
 /**
